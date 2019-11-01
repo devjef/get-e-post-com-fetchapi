@@ -1,0 +1,2 @@
+Eu sou um simples arquivo de texto
+from: /sample.txt
