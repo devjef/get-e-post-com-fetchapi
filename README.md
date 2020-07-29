@@ -1,6 +1,5 @@
 # fetchAPI
 
-GET de arquivos Text e Json local e Json de Endpoint.
-POST de Json em Endpoint.
+> Projeto construido para demonstrar a realização de requisições GET e POST.
 
-Visualização: https://devjef.github.io/get-e-post-com-FetchAPI/
+[Ver Projeto](https://devjef.github.io/get-e-post-com-FetchAPI/)
