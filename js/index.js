@@ -1,9 +1,14 @@
 'use strict'
 
+document.addEventListener('DOMContentLoaded', function() {
+  hideFormPost();
+});
+
 const getText = () => {
   fetch('sample.txt')
     .then((res) => res.text())
     .then((data) => {
+      document.getElementById('output').innerHTML = '';
       document.getElementById('output').innerHTML = data;
     })
     .catch((err) => console.log("erro", err))
@@ -22,6 +27,7 @@ const getUsers = () => {
                 <li class="list-group-item">Email: ${user.email}</li>
               </ul>
             `
+        document.getElementById('output').innerHTML = '';
         document.getElementById('output').innerHTML = output;
       })
     })
@@ -41,6 +47,7 @@ const getPosts = () => {
             </div>
             `
 
+        document.getElementById('output').innerHTML = '';
         document.getElementById('output').innerHTML = output;
       })
     })
@@ -70,17 +77,31 @@ const addPost = (e) => {
               <p>body: ${data.body}</p>
             </div>
             `
+      document.getElementById('title').value = ''
+      document.getElementById('body').value = '';
+      document.getElementById('output').innerHTML = '';
       document.getElementById('output').innerHTML = output;
+      document.getElementById('title').focus();
     })
 }
 
+const showFormPost = () => {
+  document.getElementById('output').innerHTML = '';
+  document.querySelector('form').removeAttribute('style');
+}
 
+const hideFormPost = () => {
+  document.querySelector('form').setAttribute('style', 'display: none;');
+}
 
 document.getElementById('getText').addEventListener('click', getText);
+document.getElementById('getText').addEventListener('click', hideFormPost);
+
 document.getElementById('getUsers').addEventListener('click', getUsers);
+document.getElementById('getUsers').addEventListener('click', hideFormPost);
+
 document.getElementById('getPosts').addEventListener('click', getPosts);
+document.getElementById('getPosts').addEventListener('click', hideFormPost);
+
 document.getElementById('addPost').addEventListener('submit', addPost);
-
-
-
-
+document.getElementById('showPostForm').addEventListener('click', showFormPost);
